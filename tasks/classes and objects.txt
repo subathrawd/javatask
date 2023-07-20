@@ -1,0 +1,109 @@
+
+
+//1.task(classes and objects)
+package Ysquare_task_java; 
+import java.util.Scanner;  
+class BankDetails { 
+	private int id;
+	private String u_name;
+	private String email;
+	private int psd;
+    private String accno;  
+    
+    private String acc_type;  
+    private long balance;  
+    Scanner sc = new Scanner(System.in);  
+    //method to open new account  
+    public void openAccount() {  
+    	System.out.print("Enter id: ");  
+        id = Integer.parseInt(sc.next()); 
+        System.out.print("Enter password:(in numbers) ");  
+        psd =Integer.parseInt(sc.next()); 
+        System.out.print("Enter email: ");  
+        email = sc.next(); 
+        System.out.print("Enter Account No: ");  
+        accno = sc.next();  
+        System.out.print("Enter Account type: ");  
+        acc_type = sc.next();  
+        System.out.print("Enter Name: ");  
+        u_name = sc.next();  
+        System.out.print("Enter Balance: ");  
+        balance = sc.nextLong();  
+    }  
+    //method to display account details  
+    public void showAccount() { 
+    	System.out.println("Account id: " + id); 
+   	 System.out.println("Password: " + psd);  
+   	 System.out.println("Email: " +email );  
+        System.out.println("Name of account holder: " +u_name);  
+        System.out.println("Account no.: " + accno);  
+        System.out.println("Account type: " + acc_type);  
+        System.out.println("Balance: " + balance);  
+    }  
+    //method to deposit money  
+    public void deposit() {  
+        long amt;  
+        System.out.println("Enter the amount you want to deposit: ");  
+        amt = sc.nextLong();  
+        balance = balance + amt;  
+    }  
+    //method to withdraw money  
+    public void withdrawal() {  
+        long amt;  
+        System.out.println("Enter the amount you want to withdraw: ");  
+        amt = sc.nextLong();  
+        if (balance >= amt) {  
+            balance = balance - amt;  
+            System.out.println("Balance after withdrawal: " + balance);  
+        } else {  
+            System.out.println("Your balance is less than " + amt + "\tTransaction failed...!!" );  
+        }  
+    }  
+    //method to search an account number  
+    public boolean search(String ac_no) {  
+        if (accno.equals(ac_no)) {  
+            showAccount();  
+            return (true);  
+        }  
+        return (false);  
+    }  
+}  
+public class Hello {  
+    public static void main(String arg[]) {  
+        Scanner sc = new Scanner(System.in);  
+        //create initial accounts  
+        
+        
+        BankDetails C = new BankDetails();  
+        
+            C = new BankDetails();  
+            C.openAccount();  
+         
+        // loop runs until number 5 is not pressed to exit  
+        int ch;  
+        do {  
+            System.out.println("\n ***Banking System Application***");  
+            System.out.println("1. show user details \n2. create user\n3.Exit \n"+"enter your choice");  
+            
+            ch = sc.nextInt();  
+                switch (ch) {  
+                    case 1:  
+                         
+                            C.showAccount();  
+                          
+                        break;  
+                    case 2:  
+                        System.out.print("create account \n ");  
+                        C.openAccount();
+                                break;  
+                             
+                        
+                      case 3:  
+                        System.out.println("See you soon...");  
+                        break;  
+                }  
+            }
+    
+            while (ch != 3);  
+        }  
+    }  
